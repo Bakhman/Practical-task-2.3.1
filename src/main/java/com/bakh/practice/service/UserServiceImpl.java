@@ -15,7 +15,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
-    UserDaoImpl userDao = new UserDaoImpl(new JavaConfig().em());
+    private UserDaoImpl userDao = new UserDaoImpl(new JavaConfig().em());
 
     @Override
     public void createUsersTable() {
