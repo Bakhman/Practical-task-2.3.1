@@ -23,7 +23,7 @@ public class UserController {
         return "users";
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/edit/{id}")
     public ModelAndView editPage(@PathVariable("id") int id) {
         User user = userService.getUserById(id);
         ModelAndView modelAndView = new ModelAndView();
@@ -32,7 +32,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @PostMapping(value = "/edit")
     public ModelAndView editUser(@ModelAttribute("user") User user){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/users");
@@ -40,15 +40,13 @@ public class UserController {
         return  modelAndView;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView gettingPageForAddUser(@ModelAttribute("user") User user) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("pageForAddUser");
-        modelAndView.addObject("user", user);
-        return modelAndView;
+    @GetMapping("/add")
+    public String gettingPageForAddUser(Model model, User user) {
+        model.addAttribute(user);
+        return "pageForAddUser";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping(value = "/add")
     public ModelAndView addUser(@ModelAttribute("user") User user) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/users");
