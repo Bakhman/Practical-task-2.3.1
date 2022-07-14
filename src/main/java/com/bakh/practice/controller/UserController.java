@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView addPage() {
+    public ModelAndView addUserPage() {
         User user = new User();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("addUser");
