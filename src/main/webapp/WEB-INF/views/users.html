@@ -14,8 +14,9 @@
         <th scope="col">name</th>
         <th scope="col">lastName</th>
         <th scope="col">age</th>
-        <th><a th:href="@{users/add}"> Add new user </a></th>
+        <th><a th:href="@{/users/add}"> Add new user </a></th>
     </tr>
+
     </thead>
     <tbody>
     <tr th:each="user: ${userList}">
@@ -30,9 +31,6 @@
     </tr>
     </tbody>
 </table>
-<br/>
-<hr/>
-<h2>Add</h2>
-<a th:href="@{users/add}"> Add new user </a>
+
 </body>
 </html>
