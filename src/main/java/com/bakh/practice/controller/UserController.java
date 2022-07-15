@@ -2,7 +2,7 @@ package com.bakh.practice.controller;
 
 import com.bakh.practice.model.User;
 import com.bakh.practice.service.UserService;
-import com.bakh.practice.service.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    private UserService userService = new UserServiceImpl();
+
+
+    private UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService){
+        this.userService = userService;
+    }
 
 
     @GetMapping()
