@@ -3,7 +3,7 @@ package com.bakh.practice.service;
 import com.bakh.practice.config.JavaConfig;
 import com.bakh.practice.dao.UserDaoImpl;
 import com.bakh.practice.model.User;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author Bakhmai Begaev
  */
-@Component
+@Service
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
