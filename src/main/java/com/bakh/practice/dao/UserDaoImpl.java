@@ -2,6 +2,7 @@ package com.bakh.practice.dao;
 
 
 import com.bakh.practice.model.User;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * @author Bakhmai Begaev
  */
+@Repository
 public class UserDaoImpl implements UserDao{
 
     private EntityManager entityManager;
@@ -48,7 +50,7 @@ public class UserDaoImpl implements UserDao{
     @Override
     public void removeUserById(long id) {
         entityManager.getTransaction().begin();
-        entityManager.createNativeQuery("delete from users where id = :id")
+        entityManager.createQuery("delete from User where id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
         entityManager.getTransaction().commit();
