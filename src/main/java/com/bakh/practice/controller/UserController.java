@@ -32,7 +32,6 @@ public class UserController {
 
     @GetMapping(value = "/edit/{id}")
     public String editPage(@PathVariable("id") int id, User user) {
-        userService.editUser(user);
         return "editPage";
     }
 
