@@ -31,12 +31,9 @@ public class UserController {
     }
 
     @GetMapping(value = "/edit/{id}")
-    public ModelAndView editPage(@PathVariable("id") int id) {
-        User user = userService.getUserById(id);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPage");
-        modelAndView.addObject("user", user);
-        return modelAndView;
+    public String editPage(@PathVariable("id") int id, User user) {
+        userService.editUser(user);
+        return "editPage";
     }
 
     @PostMapping(value = "/edit")
@@ -48,8 +45,7 @@ public class UserController {
     }
 
     @GetMapping("/add")
-    public String gettingPageForAddUser(Model model, User user) {
-        model.addAttribute(user);
+    public String pageForAdd(User user) {
         return "pageForAddUser";
     }
 
