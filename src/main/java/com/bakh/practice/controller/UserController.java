@@ -37,28 +37,24 @@ public class UserController {
     }
 
     @PostMapping(value = "/edit")
-    public ModelAndView editUser(@ModelAttribute("user") User user){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/users");
+    public String editUser(@ModelAttribute("user") User user){
         userService.editUser(user);
-        return  modelAndView;
+        return  "redirect:/users";
     }
 
     @GetMapping("/add")
-    public String pageForAdd(User user) {
-        return "pageForAddUser";
+    public String editPage(User user) {
+        return "editPage";
     }
 
     @PostMapping(value = "/add")
-    public ModelAndView addUser(@ModelAttribute("user") User user) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/users");
+    public String addUser(@ModelAttribute("user") User user) {
         userService.add(user);
-        return modelAndView;
+        return "redirect:/users";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") long id, Model model) {
+    public String deleteUser(@PathVariable("id") long id) {
         userService.removeUserById(id);
         return "redirect:/users";
     }
